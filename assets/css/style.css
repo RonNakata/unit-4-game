@@ -9,6 +9,7 @@
     text-align: center;
     overflow: hidden;
     padding-bottom: 10px;
+    margin: auto;
 }
    
 /* game title */
@@ -19,6 +20,11 @@
     font-weight: bolder;
 }
 
+/* instructions */
+.instructions{
+    margin-bottom: 20px;
+}
+
 /* Unselected characters */
 .unchosen{
     width: 60%;
@@ -27,6 +33,7 @@
     margin: auto;
     display: flex;
     justify-content: center;
+    height: 215px;  
 }
 
 .choices{
@@ -43,19 +50,7 @@
     font-size: 25px;
     background-color: yellow;
 }
-/* character options */
-/* #opt1{
-    float: left;
-}
-#opt2{
-    float: left;
-}
-#opt3{
-    float: left;
-}
-#opt4{
-    float: left;
-} */
+
 
 .unchosen:after {
     content: "";
@@ -79,6 +74,7 @@
     display: flex;
     justify-content: center;
     padding: 10px;
+    height: 215px;
 }
 
 /* Versus display between char and opponent */
@@ -104,6 +100,7 @@
     display: flex;
     justify-content: center;
     padding: 10px;
+    height: 215px;
 
 }
 

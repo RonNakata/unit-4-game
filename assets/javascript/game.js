@@ -1,52 +1,47 @@
 // The gladiators
 var swordsman = {
     name:"swordsman",
-    health:100, 
-    attackPower:5,
-    baseAP:5, 
-    counterAP:15,
-    image:"swordsman.png",
-    selected:false,
-    opponent:false,
-    id:"h1"
+    health:120, 
+    attackPower:8,
+    baseAP:8,
+    counterAP:8
+
 };
 var archer = {
     name:"archer",
-    health:120, 
+    health:100, 
     attackPower:10,
     baseAP:10,
-    counterAP:20,
-    image:"archer.png",
-    selected:false,
-    opponent:false,
-    id:"h2"
+    counterAP:10
+
 };
 var barbarian = {
     name:"barbarian",
-    health:140, 
+    health:150, 
     attackPower:15,
     baseAP:15,
-    counterAP:25,
-    image:"barbarian.png",
-    selected:false,
-    opponent:false,
-    id:"h3"
+    counterAP:14
+
 };
 var orc = {
     name:"orc",
-    health:160, 
+    health:180, 
     attackPower:20,
     baseAP:20,
-    counterAP:30,
-    image:"orc.png",
-    selected:false,
-    opponent:false,
-    id:"h3"
+    counterAP:25
+
 };
- 
+
+// var for string of name of chosen character
 var chosenchar="";
+// var for strig of name of chosen current opponent
 var chosenopp="";
+// var to store the chosen current opponents div for later removal
 var oppdiv={};
+// var to store how many opponents have been defeated
+var numdefeated=0;
+//keep track of how many selections were made
+var pickCount=0;
 
 // Function to populate health on screen
 function popHealth(){
@@ -56,8 +51,6 @@ function popHealth(){
     $('#h4').text(orc.health);    
 }
 
-// populate beginning health
-popHealth();
 
 // Function to display damage messages
 function damagemessage() {
@@ -71,6 +64,7 @@ function damagemessage() {
 function defeated() {
     $('#attackmessage1').text("You have defeated " + chosenopp + ".");
     $('#attackmessage2').text("Please select another opponent.");
+    numdefeated++;
 }
 
 function youlose() {
@@ -84,25 +78,48 @@ function youwin() {
 }
 
 
-
-var pickCount=0;
-
 $(document).ready(function() {
 
-// First click, moves choice to char and sets char in global var
+    // populate beginning health
+    popHealth();
+
+    // Restart the game when dynamically generated reset button appears
+    $(document).on ("click", "#btn_reload", function(){
+        console.log("is this doing anything??");
+        location.reload(true); 
+    
+    });
+
+// Function for when gladiator's are clicked on
     $('[class="choices"]').click(function() {
+// First click, moves choice to char and sets char in global var
         if (pickCount===0) {
             pickCount++;
             $(this).appendTo('.character');
             chosenchar=($(this).attr("id"));
         }
-// subsequent clicks move choice to opponent field and sets oppponent global var
-        else {
+// second click move choice to opponent field and sets oppponent global var
+        else if (pickCount===1) {
             pickCount++;
             oppdiv=this;
             $(this).appendTo('.opponent');
             chosenopp=($(this).attr("id"));
         }
+// don't let another selection be made until second pick is defeated
+        else if ( (pickCount===2) && (numdefeated===1) ) {
+            pickCount++;
+            oppdiv=this;
+            $(this).appendTo('.opponent');
+            chosenopp=($(this).attr("id"));
+        }
+// last selection can only be made after previous two are defeated
+        else if ( (pickCount===3) && (numdefeated===2) ) {
+            pickCount++;
+            oppdiv=this;
+            $(this).appendTo('.opponent');
+            chosenopp=($(this).attr("id")); 
+        }
+
 
     });
 
@@ -110,11 +127,12 @@ $(document).ready(function() {
     $('#attackButton').click(function() {
 
         if ( (window[chosenchar].health > 0) && (window[chosenopp].health > 0)) {
-
         // Opponent health decrements by character attack
         window[chosenopp].health=(window[chosenopp].health - window[chosenchar].attackPower)
         // Character health decrements by opponent counterattack
+        if ( window[chosenopp].health > 0 ) {
         window[chosenchar].health=(window[chosenchar].health - window[chosenopp].counterAP)
+        }
         //triger damage message
         damagemessage();
         // increase your attack power by base ap
@@ -128,7 +146,7 @@ $(document).ready(function() {
             youlose();
         }
 
-        if ( window[chosenopp].health <= 0 ) {
+        if ( (window[chosenopp].health <= 0) && (window[chosenchar].health >0) ) {
             oppdiv.remove();
             defeated();
             if(pickCount===4){
@@ -140,11 +158,6 @@ $(document).ready(function() {
 
 });
 
-    // Restart the game
-    $("#btn_reload").click(function(){
-        console.log("is this doing anything??");
-        // location.reload(true); 
     
-    });
 
 
