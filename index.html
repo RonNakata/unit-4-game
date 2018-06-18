@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arena</title>
+
+    <!-- Linking CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
+
+</head>
+
+
+<body>
+
+    <div class="gamebox">
+
+        <div class="title">
+            <h1>Arena</h1>
+         </div>
+
+        <div class="instructions">
+             <p>Chose your character, then chose an opponent, then fight!</p>
+        </div>
+
+        <div class="unchosen">
+            <div class="choices" id="swordsman">
+                    <img src="assets/images/swordsman.png" alt="swordsman">
+                    <div class="health" id="h1">
+                    </div>
+            </div>
+            <div class="choices" id="archer">
+                    <img src="assets/images/archer.png" alt="archer">
+                    <div class="health" id="h2">
+                    </div>
+            </div>
+            <div class="choices" id="barbarian">
+                    <img src="assets/images/barbarian.png" alt="barbarian">
+                    <div class="health" id="h3">
+                        </div>
+            </div>
+            <div class="choices" id="orc">
+                    <img src="assets/images/orc.png" alt="orc">
+                    <div class="health" id="h4">
+                        </div>
+            </div>
+
+                
+        </div>
+
+        <div class="battlefield">
+
+            <div class="character">
+                
+            </div>
+
+            <div class="versus">
+                <p>VERSUS</p>
+                <button type="button" id="attackButton">Attack</button>
+                <p id="attackmessage1"></p>
+                <p id="attackmessage2"></p>
+            </div>
+            
+            <div class="opponent">
+                
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+            Enjoy =) 
+    </footer>
+
+    <!-- Linking Javascript -->
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+
+</body>
+
+</html>

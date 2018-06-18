@@ -1,0 +1,116 @@
+*{
+    box-sizing: border-box;
+}
+
+/* Container for game */
+.gamebox{
+    width: 95%;
+    background: lightgreen;
+    text-align: center;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+   
+/* game title */
+.title{
+    width: 100%;
+    border-bottom: 5px solid black;
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+/* Unselected characters */
+.unchosen{
+    width: 60%;
+    background-color: lightcoral;
+    padding: 10px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.choices{
+    position: relative;
+    text-align: center;
+}
+
+.health{
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    color: red;
+    font-weight: bolder;
+    font-size: 25px;
+    background-color: yellow;
+}
+/* character options */
+/* #opt1{
+    float: left;
+}
+#opt2{
+    float: left;
+}
+#opt3{
+    float: left;
+}
+#opt4{
+    float: left;
+} */
+
+.unchosen:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+/* Area to show chosen character vs opponent */
+.battlefield{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+/* Character display area */
+.character{
+    float: left;
+    width: 33%;
+    background-color: blue;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+/* Versus display between char and opponent */
+.versus{
+    float: left;
+    width: 34%;
+    background-color: grey;
+    padding: 10px;
+}
+
+#attackButton{
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
+
+/* Opponent display area */
+.opponent{
+    float: left;
+    width: 33%;
+    background-color: red;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+
+}
+
+/* footer */
+footer{
+    clear: both;
+    text-align: center;
+    flex-shrink: 0;
+}
+        
