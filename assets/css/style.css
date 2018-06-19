@@ -5,11 +5,13 @@
 /* Container for game */
 .gamebox{
     width: 95%;
-    background: lightgreen;
+    /* background: lightgreen; */
+    background-image: url('../images/Coliseum-in-Rome-Italy.jpg');
     text-align: center;
     overflow: hidden;
     padding-bottom: 10px;
     margin: auto;
+    background-size: cover;
 }
    
 /* game title */
@@ -18,16 +20,18 @@
     border-bottom: 5px solid black;
     font-size: 40px;
     font-weight: bolder;
+    /* color: white; */
 }
 
 /* instructions */
 .instructions{
     margin-bottom: 20px;
+    /* color: white; */
 }
 
 /* Unselected characters */
 .unchosen{
-    width: 60%;
+    width: 55%;
     background-color: lightcoral;
     padding: 10px;
     margin: auto;
@@ -60,7 +64,7 @@
 
 /* Area to show chosen character vs opponent */
 .battlefield{
-    width: 90%;
+    width: 70%;
     margin: auto;
     margin-bottom: 40px;
 }
@@ -68,7 +72,7 @@
 /* Character display area */
 .character{
     float: left;
-    width: 33%;
+    width: 25%;
     background-color: blue;
     margin: auto;
     display: flex;
@@ -80,7 +84,7 @@
 /* Versus display between char and opponent */
 .versus{
     float: left;
-    width: 34%;
+    width: 50%;
     background-color: grey;
     padding: 10px;
 }
@@ -94,7 +98,7 @@
 /* Opponent display area */
 .opponent{
     float: left;
-    width: 33%;
+    width: 25%;
     background-color: red;
     margin: auto;
     display: flex;
